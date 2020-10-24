@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# set variables
+[ -z $kaomoji_dir ] && kaomoji_dir=~/.local/share/dmenukaomoji/kaomoji.d
+
+
+# get character using dmenu
+dir=$(ls $kaomoji_dir | dmenu "$@")
+[ $dir != "" ] && file=$(ls $kaomoji_dir/$dir | dmenu "$@")
+[ $file != "" ] && character=$(cat $kaomoji_dir/$dir/$file | dmenu "$@")
+
+
+# copy character to clipboard
+echo -n $character | xclip -selection clipboard
+echo -n $character | xclip -selection clipboard
+echo -n $character | xclip -selection clipboard
+

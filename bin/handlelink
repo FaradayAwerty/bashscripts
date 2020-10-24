@@ -1,0 +1,85 @@
+#!/bin/bash
+echo "$1"
+
+# create selection string
+selection_string="terminal_browser gui_browser mpv youtube-dl nvlc wget xdg-open"
+quality_selection_string="240 360 480 720 description plain"
+
+# choose action
+select choice in $selection_string 
+do
+    case $choice in
+        "terminal_browser")
+			$BROWSER "$1"
+            ;;
+
+        "gui_browser")
+			$GUI_BROWSER "$1"
+            ;;
+        "wget")
+            wget "$1"
+            ;;
+        "xdg-open")
+            xdg-open "$1"
+            ;;
+        "nvlc")
+            nvlc --no-color "$1"
+            ;;
+
+        "mpv")
+            select quality in $quality_selection_string
+            do
+                case $quality in
+                    "plain")
+                        mpv "$1"
+                        ;;
+                    "240")
+                        mpv --ytdl-format="bestvideo[height<=?240]+bestaudio/best" "$1"
+                        ;;
+                    "360")
+                        mpv --ytdl-format="bestvideo[height<=?360]+bestaudio/best" "$1"
+                        ;;
+                    "480")
+                        mpv --ytdl-format="bestvideo[height<=?480]+bestaudio/best" "$1"
+                        ;;
+                    "720")
+                        mpv --ytdl-format="bestvideo[height<=?720]+bestaudio/best" "$1"
+                        ;;
+                esac
+
+                exit
+            done
+            ;;
+
+        "youtube-dl")
+            select quality in $quality_selection_string
+            do
+                case $quality in
+                    "plain")
+                        youtube-dl "$1"
+                        ;;
+                    "240")
+                        youtube-dl --add-metadata -ic -f "bestvideo[height<=240]+bestaudio/best[height<=240]" "$1"
+                        ;;
+                    "360")
+                        youtube-dl --add-metadata -ic -f "bestvideo[height<=360]+bestaudio/best[height<=360]" "$1"
+                        ;;
+                    "480")
+                        youtube-dl --add-metadata -ic -f "bestvideo[height<=480]+bestaudio/best[height<=480]" "$1"
+                        ;;
+                    "720")
+                        youtube-dl --add-metadata -ic -f "bestvideo[height<=720]+bestaudio/best[height<=720]" "$1"
+                        ;;
+                    "description")
+                        youtube-dl --get-description --skip-download "$1" | less
+                        ;;
+                esac
+
+                exit
+            done
+            ;;
+    esac
+
+    exit
+done
+

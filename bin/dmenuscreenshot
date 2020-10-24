@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# set name for the screenshot
+name=~/screenshot$(date +"%d-%m-%H-%M-%S").png
+
+# select option with dmenu
+choice=$(printf "fullscreen\nwindow\narea\n" | dmenu "$@")
+
+case $choice in
+    fullscreen)
+        scrot $name
+        scrot /tmp/screenshot.png
+        ;;
+    area)
+        scrot -s $name
+        scrot -s /tmp/screenshot.png
+        ;;
+    window)
+        scrot -u $name
+        scrot -u /tmp/screenshot.png
+        ;;
+esac
+
+xclip -selection clipboard -t image/png -i /tmp/screenshot.png
+xclip -selection clipboard -t image/png -i /tmp/screenshot.png
+xclip -selection clipboard -t image/png -i /tmp/screenshot.png
