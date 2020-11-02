@@ -9,14 +9,17 @@ choice=$(printf "fullscreen\nwindow\narea\n" | dmenu "$@")
 case $choice in
     fullscreen)
         scrot $name
+        rm /tmp/screenshot.png
         scrot /tmp/screenshot.png
         ;;
     area)
         scrot -s $name
+        rm /tmp/screenshot.png
         scrot -s /tmp/screenshot.png
         ;;
     window)
         scrot -u $name
+        rm /tmp/screenshot.png
         scrot -u /tmp/screenshot.png
         ;;
 esac
@@ -24,3 +27,4 @@ esac
 xclip -selection clipboard -t image/png -i /tmp/screenshot.png
 xclip -selection clipboard -t image/png -i /tmp/screenshot.png
 xclip -selection clipboard -t image/png -i /tmp/screenshot.png
+
