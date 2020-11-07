@@ -45,6 +45,15 @@
 ⁷ superscript 7
 ⁸ superscript 8
 ⁹ superscript 9
+ᵃ superscript a
+ᵇ superscript b
+ᶜ superscript c
+ⁱ superscript i
+ʲ superscript j
+ᵏ superscript k
+ˣ superscript x
+ʸ superscript y
+ᶻ superscript z
 ⁻ superscript minus -
 ≈ almost equal or approximately equal
 ≠ not equal
@@ -91,6 +100,7 @@
 ∀ for all
 ∃ there exists
 ∇ nabla
+∂ partial del
 ⌈ round up first
 ⌉ round up second
 ⌊ round down first
