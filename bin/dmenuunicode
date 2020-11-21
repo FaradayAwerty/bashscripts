@@ -12,10 +12,11 @@
 
 # set variables
 [ -z $unicode_list ] && unicode_list=~/.local/share/dmenuunicode/unicode.list
+[ -z $MENU ] && MENU=dmenu
 
 
 # grab character using dmenu
-character=$(cat $unicode_list | dmenu "$@" -l 24 | cut -d " " -f 1)
+character=$(cat $unicode_list | $MENU "$@" -l 24 | cut -d " " -f 1)
 
 
 # copy character to clipboard

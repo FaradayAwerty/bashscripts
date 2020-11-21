@@ -2,12 +2,13 @@
 
 # set variables
 [ -z $kaomoji_dir ] && kaomoji_dir=~/.local/share/dmenukaomoji/kaomoji.d
+[ -z $MENU ] && MENU=dmenu
 
 
 # get character using dmenu
-dir=$(ls $kaomoji_dir | dmenu "$@")
-[ $dir != "" ] && file=$(ls $kaomoji_dir/$dir | dmenu "$@")
-[ $file != "" ] && character=$(cat $kaomoji_dir/$dir/$file | dmenu "$@")
+dir=$(ls $kaomoji_dir | $MENU "$@")
+[ $dir != "" ] && file=$(ls $kaomoji_dir/$dir | $MENU "$@")
+[ $file != "" ] && character=$(cat $kaomoji_dir/$dir/$file | $MENU "$@")
 
 
 # copy character to clipboard

@@ -1,10 +1,12 @@
 #!/bin/bash
 
+[ -z $MENU ] && MENU=dmenu
+
 # set name for the screenshot
 name=~/screenshot$(date +"%d-%m-%H-%M-%S").png
 
 # select option with dmenu
-choice=$(printf "fullscreen\nwindow\narea\n" | dmenu "$@")
+choice=$(printf "fullscreen\nwindow\narea\n" | $MENU "$@")
 
 case $choice in
     fullscreen)
