@@ -1,7 +1,0 @@
-#!/bin/bash
-
-while read line
-do
-	echo $line | sed 's/1/₁/g' | sed 's/2/₂/g' | sed 's/3/₃/g' | sed 's/4/₄/g' | sed 's/5/₅/g' | sed 's/6/₆/g' | sed 's/7/₇/g' | sed 's/8/₈/g' | sed 's/9/₉/g' | sed 's/0/₀/g' | sed 's/-->/→/g' | sed 's/*₁/1/g' | sed 's/*₂/2/g' | sed 's/*₃/3/g' | sed 's/*₄/4/g' | sed 's/*₅/5/g' | sed 's/*₆/6/g' | sed 's/*₇/7/g' | sed 's/*₈/8/g' | sed 's/*₉/9/g' | sed 's/*₀/0/g'
-done
-
