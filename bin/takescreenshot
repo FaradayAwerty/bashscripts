@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# set name for the screenshot
+name=~/screenshot$(date +"%d-%m-%H-%M-%S").png
+
+maim > $name
+
+xclip -selection clipboard -t image/png -i $name
+xclip -selection clipboard -t image/png -i $name
+xclip -selection clipboard -t image/png -i $name
+
