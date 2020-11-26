@@ -11,12 +11,12 @@ ch=$(echo -e $selstr | $MENU)
 [[ "$ch" == "downloader" ]] && $TERMINAL -e $DOWNLOADER "$@" &>/dev/null &
 
 if [[ "$ch" == "youtube-dl" ]]; then
-	qu=$(echo -e "240\n360\n720" | $MENU)
+	qu=$(echo -e "240\n360\n480\n720" | $MENU)
     $TERMINAL -e youtube-dl --add-metadata -ic -f "bestvideo[height<=$qu]+bestaudio/best[height<=$qu]" "$@" &>/dev/null &
 fi
 
 if [[ "$ch" == "mpv" ]]; then
-	qu=$(echo -e "240\n360\n720" | $MENU)
+	qu=$(echo -e "240\n360\n480\n720" | $MENU)
     mpv --geometry=25%x25%-10-10 --ytdl-format="bestvideo[height<=?$qu]+bestaudio/best" "$@" &>/dev/null &
 fi
 
