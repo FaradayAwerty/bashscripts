@@ -2,10 +2,11 @@
 
 [ -z "$MENU" ] && MENU=dmenu
 
-selstr="terminal_browser\ngui_browser\ndownloader\nmpv\nyoutube-dl"
+selstr="copy\nterminal_browser\ngui_browser\ndownloader\nmpv\nyoutube-dl"
 
 ch=$(echo -e $selstr | $MENU)
 
+[[ "$ch" == "copy" ]] && echo "$@" | xclip -selection clipboard &>/dev/null &
 [[ "$ch" == "gui_browser" ]] && $BROWSER "$@" &>/dev/null &
 [[ "$ch" == "terminal_browser" ]] && $TERMINAL -e $TERMINAL_BROWSER "$@" &>/dev/null &
 [[ "$ch" == "downloader" ]] && $TERMINAL -e $DOWNLOADER "$@" &>/dev/null &
