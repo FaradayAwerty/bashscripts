@@ -11,7 +11,7 @@ ch=$(echo -e $selstr | $MENU)
 [ "$ch" = "gui_browser" ] && $BROWSER "$@" &>/dev/null &
 [ "$ch" = "terminal_browser" ] && $TERMINAL -e $TERMINAL_BROWSER "$@" &>/dev/null &
 [ "$ch" = "downloader" ] && $TERMINAL -e $DOWNLOADER "$@" &>/dev/null &
-[ "$ch" = "media_viewer" ] && $MEDIA_VIEWER "$@" &>/dev/null &
+[ "$ch" = "media_viewer" ] && $MEDIA_PLAYER "$@" &>/dev/null &
 
 if [ "$ch" = "youtube-dl" ]; then
 	qu=$(echo -e "240\n360\n480\n720" | $MENU)
