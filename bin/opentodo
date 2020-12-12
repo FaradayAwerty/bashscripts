@@ -1,0 +1,6 @@
+#!/bin/bash
+TODO_DIR=~/todo
+TODO_FILE=$(date +"%d.%m.%Y")
+[ -f "$TODO_DIR/$TODO_FILE" ] || cp $TODO_DIR/blank $TODO_DIR/$TODO_FILE
+$EDITOR $TODO_DIR/$TODO_FILE
+
