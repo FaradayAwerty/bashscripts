@@ -1,8 +1,8 @@
 #!/bin/bash
-
-# from http://st.suckless.org/patches/externalpipe/
-
 regex='(((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]'
-url=$(grep -Po "$regex" | dmenu) || exit
-dmenulink "$url"
+select link in $(cat "$@" | grep -Po "$regex")
+do
+	exurl "$link"
+	exit
+done
 
