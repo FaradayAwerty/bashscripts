@@ -1,0 +1,25 @@
+#!/bin/bash
+
+[ -z "$MENU" ] && MENU=dmenu
+[ -z "$@" ] && exit
+
+ch=$(echo -e "termbrowser\nguibrowser\ndownloader\nmediaviewer\nyoutubedl" | $MENU)
+
+[ "$ch" = "guibrowser" ] && $BROWSER "$@"
+[ "$ch" = "termbrowser" ] && $TERMINAL_BROWSER "$@"
+[ "$ch" = "downloader" ] && $DOWNLOADER "$@"
+
+if [ "$ch" = "mediaviewer" ]; then
+	if [ "$MEDIA_PLAYER" = "mpv" ]; then
+			qu=$(echo -e "240\n360\n480\n720" | $MENU)
+			mpv --ytdl-format="bestvideo[height<=?$qu]+bestaudio/best" "$@"
+	else
+		$MEDIA_PLAYER "$@" &>/dev/null &
+	fi
+fi
+
+if [ "$ch" = "youtubedl" ]; then
+	qu=$(echo -e "240\n360\n480\n720" | $MENU)
+	youtube-dl --add-metadata -ic -f "bestvideo[height<=$qu]+bestaudio/best[height<=$qu]" "$@"
+fi
+

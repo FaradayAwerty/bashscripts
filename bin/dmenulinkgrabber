@@ -1,0 +1,5 @@
+#!/bin/bash
+[ -z "$MENU" ] && MENU=dmenu
+regex='(((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]'
+dmenuexurl $(grep -Po "$regex" | $MENU -l 12)
+
