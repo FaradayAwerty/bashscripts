@@ -1,0 +1,6 @@
+#!/bin/bash
+[ -z "$MENU" ] && MENU=dmenu
+ch=$(echo -e "url\nedit\npager" | $MENU)
+[ "$ch" == "url" ] && dmenulinkgrabber
+[ "$ch" == "edit" ] && $EDITOR
+[ "$ch" == "pager" ] && $PAGER

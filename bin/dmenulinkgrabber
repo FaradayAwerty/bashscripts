@@ -1,5 +1,10 @@
 #!/bin/bash
 [ -z "$MENU" ] && MENU=dmenu
+
 regex='(((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]'
-dmenuexurl $(grep -Po "$regex" | $MENU -l 12)
+
+urls=$(grep -Po "$regex")
+
+[ -z "$urls" ] && echo "ok" | $MENU -p "no URL found" && exit
+dmenuexurl $(echo "$urls" | $MENU -l 12)
 

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# key handler for sxiv
+
 while read file
 do
     case "$1" in

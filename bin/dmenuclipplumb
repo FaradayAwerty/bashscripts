@@ -1,0 +1,5 @@
+#!/bin/bash
+[ -z "$MENU" ] && MENU=dmenu
+ch=$(echo -e "url\nfilemanager\nmediaviewer\nimageviewer\nexecute" | $MENU)
+[ "$ch" == "url" ] && xclip -selection clipboard -out | dmenulinkgrabber
+
