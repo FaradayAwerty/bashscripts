@@ -1,0 +1,9 @@
+#!/bin/bash
+
+foreground=$(xrdb -query | grep 'color0:'| awk '{print $NF}')
+background=$(xrdb -query | grep 'color13:'| awk '{print $NF}')
+
+echo "$(date +' %H:%M ')"
+echo "$(date +' %H:%M ')"
+echo $foreground
+echo $background

@@ -1,0 +1,10 @@
+#!/bin/bash
+regex='\d*\.\d*\.\d*\.\d*'
+select addr in $(arp -a | grep -Po "$regex")
+do
+	echo -n "type port: "
+	read port
+	sftp -P "$port" "$addr"
+	exit
+done
+
