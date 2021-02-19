@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set name for the screenshot
-name=~/pictures/screenshots/screenshot$(date +"%d-%m-%H-%M-%S").png
+name=~/.screenshots/screenshot$(date +"%d-%m-%H-%M-%S").png
 
 maim > $name
 

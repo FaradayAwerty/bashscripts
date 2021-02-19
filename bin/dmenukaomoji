@@ -1,10 +1,10 @@
 #!/bin/bash
 
 [ -z $list ] && list=~/.local/share/dmenukaomoji/kaomoji.list
-[ -z $MENU ] && MENU=dmenu
+[ -z $DMENU ] && DMENU=dmenu
 
 # grab character using dmenu
-character=$(cat $list | $MENU "$@" -l 24 | cut -d " " -f 1)
+character=$(cat $list | $DMENU "$@" -l 24 | cut -d " " -f 1)
 
 # copy character to clipboard
 echo -n $character | xclip -selection clipboard
