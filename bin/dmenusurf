@@ -1,5 +1,0 @@
-#!/bin/bash
-[ -z $DMENU ] && DMENU=dmenu
-url="$(echo -e "duckduckgo.com\ngoogle.com\n" | $DMENU -p "URL:")"
-[ -z "$url" ] || $BROWSER "$url"
-
